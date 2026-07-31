@@ -1,26 +1,272 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: #121414;
+  --color-foreground: #e3e2e2;
+  --color-primary: #c8c6c5;
+  --color-secondary: #ffffff;
+  --color-secondary-fixed: #00fbfb;
+  --color-on-secondary-fixed: #002020;
+  
+  --color-cmyk-cyan: #00fbfb;
+  --color-cmyk-magenta: #ff2a85;
+  --color-cmyk-yellow: #ffe600;
+  --color-cmyk-key: #121414;
+  
+  --color-surface-container-lowest: #0d0e0f;
+  --color-surface-container-low: #1a1c1c;
+  --color-surface-container: #1e2020;
+  --color-surface-container-high: #292a2a;
+  --color-surface-container-highest: #343535;
+  
+  --color-outline-variant: rgba(68, 71, 72, 0.3);
+  
+  --font-sans: var(--font-heebo), sans-serif;
+  --font-display: var(--font-rubik), sans-serif;
+  
+  --spacing-container-max: 1440px;
+  --spacing-section-gap: 160px;
+  --spacing-margin-desktop: 80px;
+  --spacing-margin-mobile: 24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* CMYK Hover Colors */
+.hover-cmyk-cyan {
+  transition: all 0.3s ease;
+}
+.hover-cmyk-cyan:hover {
+  color: var(--color-cmyk-cyan) !important;
+  text-shadow: 0 0 10px rgba(0, 251, 251, 0.4);
+}
+.hover-cmyk-magenta {
+  transition: all 0.3s ease;
+}
+.hover-cmyk-magenta:hover {
+  color: var(--color-cmyk-magenta) !important;
+  text-shadow: 0 0 10px rgba(255, 42, 133, 0.4);
+}
+.hover-cmyk-yellow {
+  transition: all 0.3s ease;
+}
+.hover-cmyk-yellow:hover {
+  color: var(--color-cmyk-yellow) !important;
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+}
+.hover-cmyk-green {
+  transition: all 0.3s ease;
+}
+.hover-cmyk-green:hover {
+  color: #4ade80 !important;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* CMYK Glow shadows */
+.glow-cyan {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-cyan:hover {
+  box-shadow: 0 0 25px rgba(0, 251, 251, 0.25);
+  border-color: rgba(0, 251, 251, 0.5) !important;
+}
+.glow-magenta {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-magenta:hover {
+  box-shadow: 0 0 25px rgba(255, 42, 133, 0.25);
+  border-color: rgba(255, 42, 133, 0.5) !important;
+}
+.glow-yellow {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-yellow:hover {
+  box-shadow: 0 0 25px rgba(255, 230, 0, 0.25);
+  border-color: rgba(255, 230, 0, 0.5) !important;
+}
+.glow-green {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-green:hover {
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.5) !important;
+}
+.glow-cmyk {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-cmyk:hover {
+  box-shadow: 0 0 30px rgba(255, 42, 133, 0.2), 0 0 15px rgba(0, 251, 251, 0.2);
+  border-color: transparent !important;
+  background-image: linear-gradient(#1e2020, #1e2020), linear-gradient(135deg, #00fbfb, #ff2a85, #ffe600);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121414;
+  color: #e3e2e2;
+  font-family: var(--font-heebo), sans-serif;
+  overflow-x: hidden;
 }
+
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #1a1c1c;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #00fbfb;
+  border-radius: 9999px;
+}
+
+/* Glassmorphism */
+.glass-header {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-card {
+  background: rgba(30, 32, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Clip paths for asymmetric branding layout */
+.asymmetric-clip-right {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+
+.asymmetric-clip-left {
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+}
+
+/* Reveal scroll animation support */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bubble Button Effect */
+.goo {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.button--bubble__container {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+  /* Continuous hue-rotate creates the CMYK colour-cycling gradient effect */
+  animation: bubble-btn-hue 10s linear infinite;
+}
+
+@keyframes bubble-btn-hue {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
+.button--bubble {
+  position: relative;
+  z-index: 2;
+  color: white !important;
+  background: none !important;
+  border: none;
+  font-family: var(--font-display), sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.1s ease-out;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button--bubble:hover {
+  background: none !important;
+  color: #fff !important;
+}
+
+.button--bubble:active + .button--bubble__effect-container {
+  transform: scale(0.95);
+}
+
+.button--bubble__effect-container {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  left: -50%;
+  filter: url("#goo");
+  -webkit-filter: url("#goo");
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* Resting state: dark pill + dark circles */
+.button--bubble__effect-container .circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+
+.button--bubble__effect-container .circle.top-left {
+  top: 40%;
+  left: 27%;
+}
+
+.button--bubble__effect-container .circle.bottom-right {
+  bottom: 40%;
+  right: 27%;
+}
+
+/* The pill-shaped background behind the button text */
+.button--bubble__effect-container .effect-button {
+  position: absolute;
+  width: 50%;
+  height: 25%;
+  top: 50%;
+  left: 25%;
+  z-index: 1;
+  transform: translateY(-50%);
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+
+/* On hover: switch to bright action colour — hue-rotate does the gradient cycling */
+.button--bubble:hover + .button--bubble__effect-container .circle {
+  background: #00fbfb;
+}
+
+.button--bubble:hover + .button--bubble__effect-container .effect-button {
+  background: #00fbfb;
+}
+
+
