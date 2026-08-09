@@ -496,22 +496,25 @@ export default function Home() {
             >
               <source src="/videos/hero3.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#121414] via-[#121414]/40 to-black/70" />
+            {/* Multi-stage Professional Designer Gradient & Vignette Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121414] via-transparent to-black/80" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black/80" />
           </div>
         </div>
 
         <div className="relative z-10 w-full px-6 md:px-16 max-w-7xl mx-auto">
-          <div className="max-w-6xl text-right">
-            <h1 className="font-display font-black text-white mb-6 leading-tight drop-shadow-md">
-              <span className="block text-4xl md:text-6xl lg:text-7xl">
+          <div className="max-w-3xl text-right p-8 md:p-10 rounded-3xl bg-[#121414]/50 backdrop-blur-md border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+            <h1 className="font-display font-black text-white mb-6 leading-tight">
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
                 דפוס מקצועי שמתחיל בניסיון.
               </span>
-              <span className="block mt-3 text-2xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#00fbfb] via-[#ff2a85] to-[#ffe600]">
+              <span className="block mt-3 text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00fbfb] via-[#ff2a85] to-[#ffe600] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                 ונגמר בתוצאה מושלמת.
               </span>
             </h1>
-            <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed mb-8 font-light max-w-3xl">
-              מאז שנות ה־70 עולם הדפוס הוא חלק מהמשפחה שלנו. באסיגרף, <strong>בית דפוס בתל אביב</strong>, אנחנו משלבים ניסיון של עשרות שנים, טכנולוגיית <strong>דפוס דיגיטלי</strong> מתקדמת ופתרונות <strong>דפוס אופסט</strong> איכותיים ושירות אישי כדי להפוך כל רעיון למוצר מודפס ברמה הגבוהה ביותר.
+            <p className="font-sans text-white/95 text-base md:text-lg leading-relaxed mb-8 font-normal max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+              מאז שנות ה־70 עולם הדפוס הוא חלק מהמשפחה שלנו. באסיגרף, <strong className="text-white font-bold">בית דפוס בתל אביב</strong>, אנחנו משלבים ניסיון של עשרות שנים, טכנולוגיית <strong className="text-[#00fbfb] font-semibold">דפוס דיגיטלי</strong> מתקדמת ופתרונות <strong className="text-[#ffe600] font-semibold">דפוס אופסט</strong> איכותיים ושירות אישי כדי להפוך כל רעיון למוצר מודפס ברמה הגבוהה ביותר.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-start mb-8">
               <BubbleButton href="#contact">
@@ -525,14 +528,14 @@ export default function Home() {
               </BubbleButton>
             </div>
             {/* Small Trust Text */}
-            <div className="flex flex-wrap gap-6 justify-start items-center text-white/90 text-sm md:text-base font-medium font-sans">
-              <span className="flex items-center gap-2">
+            <div className="flex flex-wrap gap-6 justify-start items-center text-white text-sm md:text-base font-semibold font-sans pt-4 border-t border-white/10">
+              <span className="flex items-center gap-2 drop-shadow-md">
                 <span className="text-[#00fbfb]">✔</span> מעל 40 שנות ניסיון
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 drop-shadow-md">
                 <span className="text-[#ff2a85]">✔</span> שירות לכל הארץ
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 drop-shadow-md">
                 <span className="text-[#ffe600]">✔</span> פתרונות דפוס בהתאמה אישית
               </span>
             </div>
