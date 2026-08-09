@@ -750,10 +750,10 @@ export default function Home() {
           </div>
 
           {/* Grid of Video Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[
               {
-                title: "דפוס אופסט מתקדם",
+                title: "דפוס אופסט מתקדם 1",
                 category: "הדפסה בהיקף נרחב",
                 video: "/videos/offset-printing.mp4",
                 desc: "הרצת מכונת האופסט והזנת הנייר בדיוק המרבי.",
@@ -761,10 +761,18 @@ export default function Home() {
                 accent: "text-[#00fbfb]"
               },
               {
-                title: "תהליך כיול והתחלת הדפסה",
+                title: "מכונת דפוס אופסט בפעולה",
+                category: "ציוד הדפסה",
+                video: "/videos/offset-machine.mp4",
+                desc: "מבט מקרוב על תנועת הגלילים ואיכות מעבר הצבע.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              },
+              {
+                title: "כיול והתחלת הדפסה",
                 category: "הכנה למכונה",
                 video: "/videos/print-start.mp4",
-                desc: "בדיקת הקבצים והזנת גלילי הנייר לקבלת חדות גבוהה.",
+                desc: "בדיקת הקבצים והזנת הנייר לקבלת חדות גבוהה.",
                 glow: "glow-yellow hover:border-[#ffe600]/50",
                 accent: "text-[#ffe600]"
               },
@@ -777,6 +785,54 @@ export default function Home() {
                 accent: "text-[#ff2a85]"
               },
               {
+                title: "מכונת קיפול מקצועית",
+                category: "גימור וקיפול",
+                video: "/videos/folding-machine.mp4",
+                desc: "קיפול אוטומטי מהיר של פרוספקטים, ברושורים ומפות.",
+                glow: "glow-yellow hover:border-[#ffe600]/50",
+                accent: "text-[#ffe600]"
+              },
+              {
+                title: "הדבקות ומארזים",
+                category: "הדבקות וקווי גימור",
+                video: "/videos/gluing.mp4",
+                desc: "הדבקה ממוחשבת לפולדרים, קופסאות ומארזי פרימיום.",
+                glow: "glow-green hover:border-green-500/50",
+                accent: "text-green-400"
+              },
+              {
+                title: "חיתוך גיליונות מהיר",
+                category: "חיתוך וגימור",
+                video: "/videos/fast-cutting.mp4",
+                desc: "חיתוך גיליונות נייר ממוחשב ברמת דיוק של מילימטר.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              },
+              {
+                title: "חיתוך צורני ושבלונות 1",
+                category: "עיבוד צורני",
+                video: "/videos/die-cutting-1.mp4",
+                desc: "חיתוך מדויק של מדבקות, פולדרים ומארזים.",
+                glow: "glow-magenta hover:border-[#ff2a85]/50",
+                accent: "text-[#ff2a85]"
+              },
+              {
+                title: "חיתוך צורני שטנץ 2",
+                category: "עיבוד צורני",
+                video: "/videos/die-cutting-2.mp4",
+                desc: "יצירת פינות מעוגלות וצורות מיוחדות לפי דרישה.",
+                glow: "glow-yellow hover:border-[#ffe600]/50",
+                accent: "text-[#ffe600]"
+              },
+              {
+                title: "חיתוך צורני בלייזר 3",
+                category: "עיבוד צורני",
+                video: "/videos/die-cutting-3.mp4",
+                desc: "חיתוך צורני מתקדם לכרטיסים ומבנים מורכבים.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              },
+              {
                 title: "ציפוי למינציה יוקרתי",
                 category: "גימור והגנה",
                 video: "/videos/lamination.mp4",
@@ -785,20 +841,20 @@ export default function Home() {
                 accent: "text-green-400"
               },
               {
-                title: "חיתוך צורני בלייזר / שטנץ",
-                category: "עיבוד צורני",
-                video: "/videos/die-cutting.mp4",
-                desc: "חיתוך מדויק של מדבקות, פולדרים ומארזים.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "תפירה וכריכת ספרים וקטלוגים",
+                title: "תפירה וכריכת קטלוגים",
                 category: "כריכייה מקצועית",
                 video: "/videos/sewing.mp4",
                 desc: "גימור תפירת פשתן או סיכות לקטלוגים עמידים.",
                 glow: "glow-magenta hover:border-[#ff2a85]/50",
                 accent: "text-[#ff2a85]"
+              },
+              {
+                title: "ייצור לוחות שנה ומחברות",
+                category: "מוצרי ניר",
+                video: "/videos/calendar.mp4",
+                desc: "הדפסה והרכבה של לוחות שנה שולחניים וקיריים.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
               },
               {
                 title: "הצגת מוצרים מוגמרים",
