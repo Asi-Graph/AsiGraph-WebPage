@@ -125,7 +125,7 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    const sectionIds = ["services", "about", "projects", "features", "gallery", "contact"];
+    const sectionIds = ["services", "about", "video-showcase", "projects", "features", "gallery", "contact"];
     const sectionElements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
@@ -416,6 +416,7 @@ export default function Home() {
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "" ? "text-white font-semibold" : "text-white/70"}`} href="#">דף הבית</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "services" ? "text-white font-semibold" : "text-white/70"}`} href="#services">שירותים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "about" ? "text-white font-semibold" : "text-white/70"}`} href="#about">אודות</a>
+            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "video-showcase" ? "text-white font-semibold" : "text-white/70"}`} href="#video-showcase">מאחורי הקלעים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "projects" ? "text-white font-semibold" : "text-white/70"}`} href="#projects">פרויקטים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "features" ? "text-white font-semibold" : "text-white/70"}`} href="#features">הטכנולוגיה שלנו</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "gallery" ? "text-white font-semibold" : "text-white/70"}`} href="#gallery">גלריה</a>
@@ -729,17 +730,153 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Production Video Showcase Section - מאחורי הקלעים / הייצור שלנו בלייב */}
+      <section id="video-showcase" className="py-24 md:py-32 bg-gradient-to-b from-[#0d0e0f] via-[#121414] to-[#0d0e0f] border-t border-b border-white/5 relative overflow-hidden">
+        {/* Glow ambient background accents */}
+        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-[#00fbfb]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-[#ff2a85]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="px-6 md:px-16 max-w-7xl mx-auto">
+          <div className="text-center mb-16 reveal-item">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold font-sans border bg-[#00fbfb]/10 text-[#00fbfb] border-[#00fbfb]/30 mb-4">
+              🎥 מאחורי הקלעים בזמן אמת
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-4">
+              ראו את הציוד והצוות שלנו בפעולה
+            </h2>
+            <p className="font-sans text-white/70 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+              הצצה חיה אל מכונות הדפוס, הגימורים והדיוק שעומדים מאחורי כל מוצר שיוצא מבית דפוס אסיגרף.
+            </p>
+          </div>
+
+          {/* Grid of Video Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "דפוס אופסט מתקדם",
+                category: "הדפסה בהיקף נרחב",
+                video: "/videos/offset-printing.mp4",
+                desc: "הרצת מכונת האופסט והזנת הנייר בדיוק המרבי.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              },
+              {
+                title: "תהליך כיול והתחלת הדפסה",
+                category: "הכנה למכונה",
+                video: "/videos/print-start.mp4",
+                desc: "בדיקת הקבצים והזנת גלילי הנייר לקבלת חדות גבוהה.",
+                glow: "glow-yellow hover:border-[#ffe600]/50",
+                accent: "text-[#ffe600]"
+              },
+              {
+                title: "בקרת איכות ודיוק צבע",
+                category: "איכות ללא פשרות",
+                video: "/videos/color-check.mp4",
+                desc: "השוואה והתאמת גווני הדפסה לתקן CMYK מושלם.",
+                glow: "glow-magenta hover:border-[#ff2a85]/50",
+                accent: "text-[#ff2a85]"
+              },
+              {
+                title: "ציפוי למינציה יוקרתי",
+                category: "גימור והגנה",
+                video: "/videos/lamination.mp4",
+                desc: "ציפוי מט/מבריק לשמירה עמידה ומראה מרשים.",
+                glow: "glow-green hover:border-green-500/50",
+                accent: "text-green-400"
+              },
+              {
+                title: "חיתוך צורני בלייזר / שטנץ",
+                category: "עיבוד צורני",
+                video: "/videos/die-cutting.mp4",
+                desc: "חיתוך מדויק של מדבקות, פולדרים ומארזים.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              },
+              {
+                title: "תפירה וכריכת ספרים וקטלוגים",
+                category: "כריכייה מקצועית",
+                video: "/videos/sewing.mp4",
+                desc: "גימור תפירת פשתן או סיכות לקטלוגים עמידים.",
+                glow: "glow-magenta hover:border-[#ff2a85]/50",
+                accent: "text-[#ff2a85]"
+              },
+              {
+                title: "הצגת מוצרים מוגמרים",
+                category: "תוצר סופי",
+                video: "/videos/products.mp4",
+                desc: "מבחר קטלוגים, ברושורים ומארזים מוכנים.",
+                glow: "glow-yellow hover:border-[#ffe600]/50",
+                accent: "text-[#ffe600]"
+              },
+              {
+                title: "אריזה קפדנית למשלוח",
+                category: "הפצה ומשלוחים",
+                video: "/videos/packaging.mp4",
+                desc: "אריזה מוגנת והכנה למשלוחים מהירים לכל הארץ.",
+                glow: "glow-green hover:border-green-500/50",
+                accent: "text-green-400"
+              },
+              {
+                title: "סיור במפעל הדפוס בתל אביב",
+                category: "הבית שלנו",
+                video: "/videos/entrance.mp4",
+                desc: "40 שנות ניסיון משפחתי תחת קורת גג אחת.",
+                glow: "glow-cyan hover:border-[#00fbfb]/50",
+                accent: "text-[#00fbfb]"
+              }
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className={`group relative bg-[#181a1b] rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 ${item.glow} reveal-item text-right flex flex-col justify-between`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                  >
+                    <source src={item.video} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#181a1b] via-transparent to-black/30 pointer-events-none" />
+                  <div className="absolute top-3 right-3 pointer-events-none">
+                    <span className="px-2.5 py-1 rounded-md text-[11px] font-bold font-sans bg-black/60 backdrop-blur-md text-white/90 border border-white/10">
+                      {item.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className={`font-display text-xl font-bold mb-2 text-white group-hover:${item.accent} transition-colors`}>
+                      {item.title}
+                    </h3>
+                    <p className="font-sans text-white/70 text-sm font-light leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Technology & Color Accuracy Section */}
       <section id="features" className="bg-[#121414] py-24 md:py-32 overflow-hidden">
         {/* Technology Block */}
         <div className="flex flex-col lg:flex-row items-center mb-24 lg:mb-32">
-          <div className="w-full lg:w-1/2 reveal-item">
-            <img
-              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-right"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDfon2H8Flk-lvYweEpRdCIpTBO4n1-iD9PCHCyEXDHzJm0kA8Fe1iAdQrMJN02BoV3WTxrK8IDvkoTnDjO9u1h_4SpKReK7z5QvyGvXduWa4vp5L0x9S9wr_6oThZDzfN8APaFf_ylj1PHgQ_Xb6Mm_SwERQAY9uTZc3vFFzYAX1tnRzSbgelk5-pLhBad8Kf3kOgQBdppyrh2oXqlo0SBaD1-Ibk02zWxO3tf-bt8FAg8H7zOM4LjFmHtDbXQssh11wyxkA-0_w"
-              alt="ציוד דפוס מתקדם"
-              loading="lazy"
-            />
+          <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-right opacity-90"
+            >
+              <source src="/videos/offset-printing.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
@@ -754,13 +891,16 @@ export default function Home() {
 
         {/* Color Accuracy Block */}
         <div className="flex flex-col lg:flex-row-reverse items-center">
-          <div className="w-full lg:w-1/2 reveal-item">
-            <img
-              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-left"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCQGyNai8COcpmABjRM0fpU_9-oY5SJ6ShBUMnDDZUK8VR7xh0qx9WQ7YayymOMAKaTJ07eZ-9zbXtAbtMd3nSygpGcuVBq7igQwiXHWnurCrjqYNWoIls1YZL3ZYwUwaMVnSpNxZ_xx2mKarPBesnY8vn3IsY_qrjb4uFmtdMvOQb0b4bS37l3w4IO1cK3NEQj598U9MSK8wgtKXnEXGCRd9FOsyl0uVOtq-x9p5PVcQ1QEODs2dTdWLcqxqj_w_F5kdRpQyK9i0"
-              alt="דיוק צבע במקצוענות"
-              loading="lazy"
-            />
+          <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-left opacity-90"
+            >
+              <source src="/videos/color-check.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
