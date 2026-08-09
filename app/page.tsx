@@ -496,10 +496,10 @@ export default function Home() {
             >
               <source src="/videos/hero3.mp4" type="video/mp4" />
             </video>
-            {/* Cinematic Gradient Overlays for High Contrast without Glass Card */}
-            <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/70 to-black/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#121414] via-black/30 to-black/70" />
-            <div className="absolute inset-0 bg-black/40" />
+            {/* Lighter Cinematic Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-l from-black/65 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121414] via-transparent to-black/40" />
+            <div className="absolute inset-0 bg-black/15" />
           </div>
         </div>
 
