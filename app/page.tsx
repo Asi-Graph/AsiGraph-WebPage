@@ -927,15 +927,12 @@ export default function Home() {
         {/* Technology Block */}
         <div className="flex flex-col lg:flex-row items-center mb-24 lg:mb-32">
           <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPSMHJDKxOAXjA1dV_MjDU1VDEs-IsH4uWWyRnTShoOMxNYCkW679sLDUQ3FtadIjQFSYgbSvh_FnAHzxgsXN7nYNvqh7Elba_l8zC3WZX59HEFgkwFIBf0dwxzWsO5M2jnm8Nd6bWI6hAE1IsVTWJOPJT2ZXHS9mxrmmiho5_qmDLbgRCT6GSXsjb_fN3amitxF5deUY-D9eeUY5TSgmP1jWBM8nWKrJn8hdD4ju1dFhnF9AkLQvoj1dxG2pciqMFphFzeDX8ius"
+              alt="טכנולוגיית דפוס מתקדמת"
               className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-right opacity-90"
-            >
-              <source src="/videos/offset-printing.mp4" type="video/mp4" />
-            </video>
+              loading="lazy"
+            />
           </div>
           <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
@@ -951,15 +948,12 @@ export default function Home() {
         {/* Color Accuracy Block */}
         <div className="flex flex-col lg:flex-row-reverse items-center">
           <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlwVgQNiuBA_rZJ5aVaxDq3uU0nGS2nUr9JNQXvE5584Zj69SObE7VZgPwCo-RxMT_RIjjRDO-Dfkbo463DjLDmMqCyEz_pEu4aA9FaSM-i2DEsLB6JEL3Yhq4_3ZmRZVELjY95zTj6MQLjk39Rt-lkGGYP0y9PUZ5WgXK-xRWc3hv3Obq4ND5ZZIp2OP1ijrkCS7dIg8HMh31Npmeo0DgxEopEQSBRfmkpBQJqOhSO8fmMDBSdRtcS0ukI3G_LOnEdB0v9SubNd4"
+              alt="בקרת איכות ודיוק צבע"
               className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-left opacity-90"
-            >
-              <source src="/videos/color-check.mp4" type="video/mp4" />
-            </video>
+              loading="lazy"
+            />
           </div>
           <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
