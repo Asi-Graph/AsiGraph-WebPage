@@ -113,6 +113,7 @@ export default function Home() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const sliderRef = useRef<HTMLDivElement>(null);
+  const videoSliderRef = useRef<HTMLDivElement>(null);
 
   const [activeSection, setActiveSection] = useState("");
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -164,13 +165,14 @@ export default function Home() {
     const activeLink = container.querySelector<HTMLAnchorElement>(`a[href="${targetHref}"]`);
 
     const sectionColors: Record<string, string> = {
-      "": "#00fbfb",         // דף הבית (cyan)
-      "services": "#ffe600",   // שירותים (yellow)
-      "about": "#ff2a85",      // אודות (pink)
-      "projects": "#4ade80",   // פרויקטים (green)
-      "features": "#00fbfb",   // הטכנולוגיה שלנו (cyan)
-      "gallery": "#ffe600",    // גלריה (yellow)
-      "contact": "#ff2a85"     // צור קשר (pink)
+      "": "#00fbfb",           // דף הבית (cyan)
+      "services": "#ffe600",     // שירותים (yellow)
+      "about": "#ff2a85",        // אודות (pink)
+      "projects": "#4ade80",     // פרויקטים (green)
+      "video-showcase": "#ff2a85", // מאחורי הקלעים (magenta)
+      "features": "#00fbfb",     // הטכנולוגיה שלנו (cyan)
+      "gallery": "#ffe600",      // גלריה (yellow)
+      "contact": "#4ade80"       // צור קשר (green)
     };
 
     if (activeLink) {
@@ -237,7 +239,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [isSliderHovered]);
 
-  // Service Slider manual controls
+  // Service Slider manual controls (RTL aware)
   const scrollSlider = (direction: "left" | "right") => {
     if (!sliderRef.current) return;
     const container = sliderRef.current;
@@ -245,9 +247,24 @@ export default function Home() {
     const isRTL = getComputedStyle(container).direction === "rtl";
 
     if (direction === "left") {
-      container.scrollBy({ left: isRTL ? cardWidth : -cardWidth, behavior: "smooth" });
+      // Clicking left arrow in RTL should reveal items to the left (forward in RTL order)
+      container.scrollBy({ left: isRTL ? -cardWidth : -cardWidth, behavior: "smooth" });
     } else {
-      container.scrollBy({ left: isRTL ? -cardWidth : cardWidth, behavior: "smooth" });
+      // Clicking right arrow in RTL should reveal items to the right (backward in RTL order)
+      container.scrollBy({ left: isRTL ? cardWidth : cardWidth, behavior: "smooth" });
+    }
+  };
+
+  const scrollVideoSlider = (direction: "left" | "right") => {
+    if (!videoSliderRef.current) return;
+    const container = videoSliderRef.current;
+    const cardWidth = container.clientWidth * 0.85;
+    const isRTL = getComputedStyle(container).direction === "rtl";
+
+    if (direction === "left") {
+      container.scrollBy({ left: isRTL ? -cardWidth : -cardWidth, behavior: "smooth" });
+    } else {
+      container.scrollBy({ left: isRTL ? cardWidth : cardWidth, behavior: "smooth" });
     }
   };
 
@@ -416,11 +433,11 @@ export default function Home() {
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "" ? "text-white font-semibold" : "text-white/70"}`} href="#">דף הבית</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "services" ? "text-white font-semibold" : "text-white/70"}`} href="#services">שירותים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "about" ? "text-white font-semibold" : "text-white/70"}`} href="#about">אודות</a>
-            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "video-showcase" ? "text-white font-semibold" : "text-white/70"}`} href="#video-showcase">מאחורי הקלעים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "projects" ? "text-white font-semibold" : "text-white/70"}`} href="#projects">פרויקטים</a>
+            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "video-showcase" ? "text-white font-semibold" : "text-white/70"}`} href="#video-showcase">מאחורי הקלעים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "features" ? "text-white font-semibold" : "text-white/70"}`} href="#features">הטכנולוגיה שלנו</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "gallery" ? "text-white font-semibold" : "text-white/70"}`} href="#gallery">גלריה</a>
-            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "contact" ? "text-white font-semibold" : "text-white/70"}`} href="#contact">צור קשר</a>
+            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "contact" ? "text-white font-semibold" : "text-white/70"}`} href="#contact">צור קשר</a>
 
             {/* Sliding Underline Indicator */}
             <span
@@ -468,10 +485,11 @@ export default function Home() {
             <a onClick={() => setMobileMenuOpen(false)} className="font-display font-semibold text-[#00fbfb]" href="#">דף הבית</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-magenta" href="#services">שירותים</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-yellow" href="#about">אודות</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-cyan" href="#projects">פרויקטים</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-magenta" href="#features">הטכנולוגיה שלנו</a>
+            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-green" href="#projects">פרויקטים</a>
+            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-magenta" href="#video-showcase">מאחורי הקלעים</a>
+            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-cyan" href="#features">הטכנולוגיה שלנו</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-yellow" href="#gallery">גלריה</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-cyan" href="#contact">צור קשר</a>
+            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-green" href="#contact">צור קשר</a>
           </div>
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col gap-4 text-right">
@@ -484,8 +502,9 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-start overflow-hidden pt-28 pb-16">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-screen flex flex-col md:flex-row md:items-center justify-start overflow-hidden pt-24 md:pt-28 pb-16">
+        {/* Background Video for Desktop */}
+        <div className="hidden md:block absolute inset-0 z-0">
           <div className="relative w-full h-full">
             <video
               autoPlay
@@ -503,19 +522,34 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full px-6 md:px-16 max-w-7xl mx-auto">
+        <div className="relative z-10 w-full px-6 md:px-16 max-w-7xl mx-auto flex flex-col">
           <div className="max-w-6xl text-right">
             <h1 className="font-display font-black text-white mb-6 leading-tight">
-              <span className="block text-4xl md:text-6xl lg:text-7xl text-white tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
+              <span className="block text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
                 דפוס מקצועי שמתחיל בניסיון.
               </span>
-              <span className="block mt-3 text-2xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#00fbfb] via-[#ff2a85] to-[#ffe600] drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
+              <span className="block mt-3 text-xl sm:text-2xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#00fbfb] via-[#ff2a85] to-[#ffe600] drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
                 ונגמר בתוצאה מושלמת.
               </span>
             </h1>
-            <p className="font-sans text-white text-lg md:text-xl leading-relaxed mb-8 font-normal max-w-4xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-              מאז שנות ה־70 עולם הדפוס הוא חלק מהמשפחה שלנו. באסיגרף, <strong className="text-[#00fbfb] font-bold">בית דפוס בתל אביב</strong>, אנחנו משלבים ניסיון של עשרות שנים, טכנולוגיית <strong className="text-[#ffe600] font-bold">דפוס דיגיטלי</strong> מתקדמת ופתרונות <strong className="text-[#ff2a85] font-bold">דפוס אופסט</strong> איכותיים ושירות אישי כדי להפוך כל רעיון למוצר מודפס ברמה הגבוהה ביותר.
+            <p className="font-sans text-white/90 text-base md:text-xl leading-relaxed mb-6 md:mb-8 font-normal max-w-4xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+              מאז שנות ה־70 עולם הדפוס הוא חלק מהמשפחה שלנו. <br />באסיגרף, <strong className="text-[#00fbfb] font-bold">בית דפוס בתל אביב בשכונת נווה צדק</strong>, אנו משלבים ניסיון של עשרות שנים, טכנולוגיית <strong className="text-[#ffe600] font-bold">דפוס אופסט ודיגיטלי</strong> מתקדמת ופתרונות <strong className="text-[#ff2a85] font-bold">גימור וכריכה</strong> איכותיים ושירות אישי כדי להפוך כל רעיון למוצר מודפס ברמה הגבוהה ביותר.
             </p>
+
+            {/* Video specifically placed below text content on Mobile */}
+            <div className="block md:hidden w-full my-6 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative aspect-video">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/videos/hero.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-start mb-8">
               <BubbleButton href="#contact">
                 קבלו הצעת מחיר
@@ -653,45 +687,45 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-item">
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-[#00fbfb]/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[#00fbfb] font-display text-2xl font-black block mb-3">40+ שנות ניסיון</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 reveal-item">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-[#00fbfb]/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[#00fbfb] font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">40+ שנות ניסיון</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 ידע שנצבר במשך עשורים רבים בעולם הדפוס. ניסיון משפחתי שעובר בין דורות ומבטיח פתרונות מיומנים לכל אתגר.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-[#ffe600]/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[#ffe600] font-display text-2xl font-black block mb-3">ציוד מתקדם</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-[#ffe600]/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[#ffe600] font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">ציוד מתקדם</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 מכונות מהמתקדמות בעולם בעולם הדפוס הדיגיטלי והדפוס אופסט לקבלת תוצאות מושלמות בכל קנה מידה.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-[#ff2a85]/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[#ff2a85] font-display text-2xl font-black block mb-3">דיוק בכל פרט</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-[#ff2a85]/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[#ff2a85] font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">דיוק בכל פרט</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 בקרת איכות קפדנית ביותר בכל שלב – משלב קדם הדפסה והתאמת קבצים ועד הגימור הסופי והאריזה.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-green-500/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-green-400 font-display text-2xl font-black block mb-3">שירות אישי</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-green-500/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-green-400 font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">שירות אישי</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 אנחנו זמינים, קשובים ומלווים כל לקוח מקרוב בגובה העיניים – מעסקים קטנים ועד חברות ענק.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-[#00fbfb]/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[#00fbfb] font-display text-2xl font-black block mb-3">פתרונות בהתאמה אישית</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-[#00fbfb]/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[#00fbfb] font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">פתרונות בהתאמה אישית</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 אין שתי עבודות זהות. גם הפתרון שלנו לא. אנחנו התאמנו פתרונות הדפסה ייחודיים לצרכים הספציפיים שלכם.
               </p>
             </div>
 
-            <div className="glass-card p-8 rounded-2xl text-right border border-white/5 hover:border-[#ffe600]/30 transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[#ffe600] font-display text-2xl font-black block mb-3">משלוחים לכל הארץ</span>
-              <p className="text-white/80 text-base font-sans leading-relaxed">
+            <div className="glass-card p-4 md:p-8 rounded-xl md:rounded-2xl text-right border border-white/5 hover:border-[#ffe600]/30 transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[#ffe600] font-display text-lg md:text-2xl font-black block mb-2 md:mb-3">משלוחים לכל הארץ</span>
+              <p className="text-white/80 text-xs md:text-base font-sans leading-relaxed">
                 מייצרים בבית דפוס בתל אביב ומגיעים לכל מקום בארץ במהירות ובבטחה.
               </p>
             </div>
@@ -752,172 +786,198 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Grid of Video Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {[
-              {
-                title: "דפוס אופסט מתקדם 1",
-                category: "הדפסה בהיקף נרחב",
-                video: "/videos/offset-printing.mp4",
-                desc: "הרצת מכונת האופסט והזנת הנייר בדיוק המרבי.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "מכונת דפוס אופסט בפעולה",
-                category: "ציוד הדפסה",
-                video: "/videos/offset-machine.mp4",
-                desc: "מבט מקרוב על תנועת הגלילים ואיכות מעבר הצבע.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "כיול והתחלת הדפסה",
-                category: "הכנה למכונה",
-                video: "/videos/print-start.mp4",
-                desc: "בדיקת הקבצים והזנת הנייר לקבלת חדות גבוהה.",
-                glow: "glow-yellow hover:border-[#ffe600]/50",
-                accent: "text-[#ffe600]"
-              },
-              {
-                title: "בקרת איכות ודיוק צבע",
-                category: "איכות ללא פשרות",
-                video: "/videos/color-check.mp4",
-                desc: "השוואה והתאמת גווני הדפסה לתקן CMYK מושלם.",
-                glow: "glow-magenta hover:border-[#ff2a85]/50",
-                accent: "text-[#ff2a85]"
-              },
-              {
-                title: "מכונת קיפול מקצועית",
-                category: "גימור וקיפול",
-                video: "/videos/folding-machine.mp4",
-                desc: "קיפול אוטומטי מהיר של פרוספקטים, ברושורים ומפות.",
-                glow: "glow-yellow hover:border-[#ffe600]/50",
-                accent: "text-[#ffe600]"
-              },
-              {
-                title: "הדבקות ומארזים",
-                category: "הדבקות וקווי גימור",
-                video: "/videos/gluing.mp4",
-                desc: "הדבקה ממוחשבת לפולדרים, קופסאות ומארזי פרימיום.",
-                glow: "glow-green hover:border-green-500/50",
-                accent: "text-green-400"
-              },
-              {
-                title: "חיתוך גיליונות מהיר",
-                category: "חיתוך וגימור",
-                video: "/videos/fast-cutting.mp4",
-                desc: "חיתוך גיליונות נייר ממוחשב ברמת דיוק של מילימטר.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "חיתוך צורני ושבלונות 1",
-                category: "עיבוד צורני",
-                video: "/videos/die-cutting-1.mp4",
-                desc: "חיתוך מדויק של מדבקות, פולדרים ומארזים.",
-                glow: "glow-magenta hover:border-[#ff2a85]/50",
-                accent: "text-[#ff2a85]"
-              },
-              {
-                title: "חיתוך צורני שטנץ 2",
-                category: "עיבוד צורני",
-                video: "/videos/die-cutting-2.mp4",
-                desc: "יצירת פינות מעוגלות וצורות מיוחדות לפי דרישה.",
-                glow: "glow-yellow hover:border-[#ffe600]/50",
-                accent: "text-[#ffe600]"
-              },
-              {
-                title: "חיתוך צורני בלייזר 3",
-                category: "עיבוד צורני",
-                video: "/videos/die-cutting-3.mp4",
-                desc: "חיתוך צורני מתקדם לכרטיסים ומבנים מורכבים.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "ציפוי למינציה יוקרתי",
-                category: "גימור והגנה",
-                video: "/videos/lamination.mp4",
-                desc: "ציפוי מט/מבריק לשמירה עמידה ומראה מרשים.",
-                glow: "glow-green hover:border-green-500/50",
-                accent: "text-green-400"
-              },
-              {
-                title: "תפירה וכריכת קטלוגים",
-                category: "כריכייה מקצועית",
-                video: "/videos/sewing.mp4",
-                desc: "גימור תפירת פשתן או סיכות לקטלוגים עמידים.",
-                glow: "glow-magenta hover:border-[#ff2a85]/50",
-                accent: "text-[#ff2a85]"
-              },
-              {
-                title: "ייצור לוחות שנה ומחברות",
-                category: "מוצרי ניר",
-                video: "/videos/calendar.mp4",
-                desc: "הדפסה והרכבה של לוחות שנה שולחניים וקיריים.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              },
-              {
-                title: "הצגת מוצרים מוגמרים",
-                category: "תוצר סופי",
-                video: "/videos/products.mp4",
-                desc: "מבחר קטלוגים, ברושורים ומארזים מוכנים.",
-                glow: "glow-yellow hover:border-[#ffe600]/50",
-                accent: "text-[#ffe600]"
-              },
-              {
-                title: "אריזה קפדנית למשלוח",
-                category: "הפצה ומשלוחים",
-                video: "/videos/packaging.mp4",
-                desc: "אריזה מוגנת והכנה למשלוחים מהירים לכל הארץ.",
-                glow: "glow-green hover:border-green-500/50",
-                accent: "text-green-400"
-              },
-              {
-                title: "סיור במפעל הדפוס בתל אביב",
-                category: "הבית שלנו",
-                video: "/videos/entrance.mp4",
-                desc: "40 שנות ניסיון משפחתי תחת קורת גג אחת.",
-                glow: "glow-cyan hover:border-[#00fbfb]/50",
-                accent: "text-[#00fbfb]"
-              }
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className={`group relative bg-[#181a1b] rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 ${item.glow} reveal-item text-right flex flex-col justify-between`}
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-black">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                  >
-                    <source src={item.video} type="video/mp4" />
-                  </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#181a1b] via-transparent to-black/30 pointer-events-none" />
-                  <div className="absolute top-3 right-3 pointer-events-none">
-                    <span className="px-2.5 py-1 rounded-md text-[11px] font-bold font-sans bg-black/60 backdrop-blur-md text-white/90 border border-white/10">
-                      {item.category}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className={`font-display text-xl font-bold mb-2 text-white group-hover:${item.accent} transition-colors`}>
-                      {item.title}
-                    </h3>
-                    <p className="font-sans text-white/70 text-sm font-light leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
+          {/* Video Showcase Container: Carousel on mobile, Grid on md+ */}
+          <div className="relative group">
+            {/* Mobile Nav Arrows */}
+            <div className="flex md:hidden justify-between items-center mb-4 px-2">
+              <span className="text-white/60 text-xs font-sans">החליקו לצפייה בסרטונים ◄</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => scrollVideoSlider("right")}
+                  className="p-2 rounded-full bg-white/10 text-white hover:bg-[#00fbfb] hover:text-black transition-colors"
+                  aria-label="הקודם"
+                >
+                  <ChevronRight size={18} />
+                </button>
+                <button
+                  onClick={() => scrollVideoSlider("left")}
+                  className="p-2 rounded-full bg-white/10 text-white hover:bg-[#00fbfb] hover:text-black transition-colors"
+                  aria-label="הבא"
+                >
+                  <ChevronLeft size={18} />
+                </button>
               </div>
-            ))}
+            </div>
+
+            <div
+              ref={videoSliderRef}
+              className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 overflow-x-auto md:overflow-visible overflow-y-hidden touch-pan-x overscroll-x-contain snap-x snap-mandatory scrollbar-none pb-4 md:pb-0"
+            >
+              {[
+                {
+                  title: "דפוס אופסט מתקדם 1",
+                  category: "הדפסה בהיקף נרחב",
+                  video: "/videos/offset-printing.mp4",
+                  desc: "הרצת מכונת האופסט והזנת הנייר בדיוק המרבי.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                },
+                {
+                  title: "מכונת דפוס אופסט בפעולה",
+                  category: "ציוד הדפסה",
+                  video: "/videos/offset-machine.mp4",
+                  desc: "מבט מקרוב על תנועת הגלילים ואיכות מעבר הצבע.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                },
+                {
+                  title: "כיול והתחלת הדפסה",
+                  category: "הכנה למכונה",
+                  video: "/videos/print-start.mp4",
+                  desc: "בדיקת הקבצים והזנת הנייר לקבלת חדות גבוהה.",
+                  glow: "glow-yellow hover:border-[#ffe600]/50",
+                  accent: "text-[#ffe600]"
+                },
+                {
+                  title: "בקרת איכות ודיוק צבע",
+                  category: "איכות ללא פשרות",
+                  video: "/videos/color-check.mp4",
+                  desc: "השוואה והתאמת גווני הדפסה לתקן CMYK מושלם.",
+                  glow: "glow-magenta hover:border-[#ff2a85]/50",
+                  accent: "text-[#ff2a85]"
+                },
+                {
+                  title: "מכונת קיפול מקצועית",
+                  category: "גימור וקיפול",
+                  video: "/videos/folding-machine.mp4",
+                  desc: "קיפול אוטומטי מהיר של פרוספקטים, ברושורים ומפות.",
+                  glow: "glow-yellow hover:border-[#ffe600]/50",
+                  accent: "text-[#ffe600]"
+                },
+                {
+                  title: "הדבקות ומארזים",
+                  category: "הדבקות וקווי גימור",
+                  video: "/videos/gluing.mp4",
+                  desc: "הדבקה ממוחשבת לפולדרים, קופסאות ומארזי פרימיום.",
+                  glow: "glow-green hover:border-green-500/50",
+                  accent: "text-green-400"
+                },
+                {
+                  title: "חיתוך גיליונות מהיר",
+                  category: "חיתוך וגימור",
+                  video: "/videos/fast-cutting.mp4",
+                  desc: "חיתוך גיליונות נייר ממוחשב ברמת דיוק של מילימטר.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                },
+                {
+                  title: "חיתוך צורני ושבלונות 1",
+                  category: "עיבוד צורני",
+                  video: "/videos/die-cutting-1.mp4",
+                  desc: "חיתוך מדויק של מדבקות, פולדרים ומארזים.",
+                  glow: "glow-magenta hover:border-[#ff2a85]/50",
+                  accent: "text-[#ff2a85]"
+                },
+                {
+                  title: "חיתוך צורני שטנץ 2",
+                  category: "עיבוד צורני",
+                  video: "/videos/die-cutting-2.mp4",
+                  desc: "יצירת פינות מעוגלות וצורות מיוחדות לפי דרישה.",
+                  glow: "glow-yellow hover:border-[#ffe600]/50",
+                  accent: "text-[#ffe600]"
+                },
+                {
+                  title: "חיתוך צורני בלייזר 3",
+                  category: "עיבוד צורני",
+                  video: "/videos/die-cutting-3.mp4",
+                  desc: "חיתוך צורני מתקדם לכרטיסים ומבנים מורכבים.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                },
+                {
+                  title: "ציפוי למינציה יוקרתי",
+                  category: "גימור והגנה",
+                  video: "/videos/lamination.mp4",
+                  desc: "ציפוי מט/מבריק לשמירה עמידה ומראה מרשים.",
+                  glow: "glow-green hover:border-green-500/50",
+                  accent: "text-green-400"
+                },
+                {
+                  title: "תפירה וכריכת קטלוגים",
+                  category: "כריכייה מקצועית",
+                  video: "/videos/sewing.mp4",
+                  desc: "גימור תפירת פשתן או סיכות לקטלוגים עמידים.",
+                  glow: "glow-magenta hover:border-[#ff2a85]/50",
+                  accent: "text-[#ff2a85]"
+                },
+                {
+                  title: "ייצור לוחות שנה ומחברות",
+                  category: "מוצרי ניר",
+                  video: "/videos/calendar.mp4",
+                  desc: "הדפסה והרכבה של לוחות שנה שולחניים וקיריים.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                },
+                {
+                  title: "הצגת מוצרים מוגמרים",
+                  category: "תוצר סופי",
+                  video: "/videos/products.mp4",
+                  desc: "מבחר קטלוגים, ברושורים ומארזים מוכנים.",
+                  glow: "glow-yellow hover:border-[#ffe600]/50",
+                  accent: "text-[#ffe600]"
+                },
+                {
+                  title: "אריזה קפדנית למשלוח",
+                  category: "הפצה ומשלוחים",
+                  video: "/videos/packaging.mp4",
+                  desc: "אריזה מוגנת והכנה למשלוחים מהירים לכל הארץ.",
+                  glow: "glow-green hover:border-green-500/50",
+                  accent: "text-green-400"
+                },
+                {
+                  title: "סיור במפעל הדפוס בתל אביב",
+                  category: "הבית שלנו",
+                  video: "/videos/entrance.mp4",
+                  desc: "40 שנות ניסיון משפחתי תחת קורת גג אחת.",
+                  glow: "glow-cyan hover:border-[#00fbfb]/50",
+                  accent: "text-[#00fbfb]"
+                }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`group relative bg-[#181a1b] rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 ${item.glow} reveal-item text-right flex flex-col justify-between shrink-0 w-[82vw] max-w-[320px] md:w-auto md:max-w-none snap-align-start`}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                    >
+                      <source src={item.video} type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#181a1b] via-transparent to-black/30 pointer-events-none" />
+                    <div className="absolute top-3 right-3 pointer-events-none">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-bold font-sans bg-black/60 backdrop-blur-md text-white/90 border border-white/10">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-5 md:p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className={`font-display text-lg md:text-xl font-bold mb-2 text-white group-hover:${item.accent} transition-colors`}>
+                        {item.title}
+                      </h3>
+                      <p className="font-sans text-white/70 text-xs md:text-sm font-light leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
