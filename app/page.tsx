@@ -520,7 +520,7 @@ export default function Home() {
               <BubbleButton href="#contact">
                 קבלו הצעת מחיר
               </BubbleButton>
-              <BubbleButton href="https://wa.me/972543183186" target="_blank" rel="noopener noreferrer">
+              <BubbleButton href="https://wa.me/972543183186?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%A2%D7%91%D7%95%D7%93%D7%AA%20%D7%93%D7%A4%D7%95%D7%A1" target="_blank" rel="noopener noreferrer">
                 <span className="flex items-center gap-3 justify-center">
                   <span>דברו איתנו בוואטסאפ</span>
                   <MessageSquare size={20} />
@@ -1030,7 +1030,7 @@ export default function Home() {
                   <div className="flex items-center gap-4 justify-end">
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">וואטסאפ</span>
-                      <a href="https://wa.me/972543183186" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-[#00fbfb] transition-colors">0543183186 (הודעה מהירה)</a>
+                      <a href="https://wa.me/972543183186?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%A2%D7%91%D7%95%D7%93%D7%AA%20%D7%93%D7%A4%D7%95%D7%A1" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-[#00fbfb] transition-colors">0543183186 (הודעה מהירה)</a>
                     </div>
                     <div className="p-3 bg-white/5 rounded-full text-[#00fbfb]">
                       <MessageSquare size={24} />
@@ -1179,7 +1179,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Contact Button */}
       <a
-        href="https://wa.me/972543183186"
+        href="https://wa.me/972543183186?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%A2%D7%91%D7%95%D7%93%D7%AA%20%D7%93%D7%A4%D7%95%D7%A1"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="צרו קשר בוואטסאפ"
