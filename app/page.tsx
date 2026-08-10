@@ -1177,6 +1177,22 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* Floating WhatsApp Contact Button */}
+      <a
+        href="https://wa.me/972543183186"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="צרו קשר בוואטסאפ"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] hover:scale-105 transition-all duration-300 group"
+      >
+        <span className="font-sans font-bold text-sm hidden sm:inline-block pl-1 text-white">
+          דברו איתנו בוואטסאפ
+        </span>
+        <div className="relative w-8 h-8 flex items-center justify-center">
+          <MessageSquare className="w-7 h-7 text-white fill-white stroke-[#25D366]" />
+        </div>
+      </a>
+
       {/* SVG Goo Filter for Bubble Buttons */}
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="goo">
         <defs>
