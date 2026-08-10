@@ -494,7 +494,7 @@ export default function Home() {
               playsInline
               className="h-full w-full object-cover scale-105"
             >
-              <source src="/videos/hero3.mp4" type="video/mp4" />
+              <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
             {/* Lighter Cinematic Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-l from-black/65 via-black/40 to-transparent" />
