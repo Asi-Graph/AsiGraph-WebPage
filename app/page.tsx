@@ -1183,7 +1183,7 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="צרו קשר בוואטסאפ"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] hover:scale-105 transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full hover:scale-105 transition-all duration-300 group"
       >
         <span className="font-sans font-bold text-sm hidden sm:inline-block pl-1 text-white">
           דברו איתנו בוואטסאפ
