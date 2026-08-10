@@ -523,7 +523,7 @@ export default function Home() {
               <BubbleButton href="https://wa.me/972543183186?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%A2%D7%91%D7%95%D7%93%D7%AA%20%D7%93%D7%A4%D7%95%D7%A1" target="_blank" rel="noopener noreferrer">
                 <span className="flex items-center gap-3 justify-center">
                   <span>דברו איתנו בוואטסאפ</span>
-                  <MessageSquare size={20} />
+                  <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5 object-contain" />
                 </span>
               </BubbleButton>
             </div>
@@ -1188,8 +1188,8 @@ export default function Home() {
         <span className="font-sans font-bold text-sm hidden sm:inline-block pl-1 text-white">
           דברו איתנו בוואטסאפ
         </span>
-        <div className="relative w-8 h-8 flex items-center justify-center">
-          <MessageSquare className="w-7 h-7 text-white fill-white stroke-[#25D366]" />
+        <div className="relative w-7 h-7 flex items-center justify-center shrink-0">
+          <img src="/whatsapp.svg" alt="WhatsApp" className="w-full h-full object-contain" />
         </div>
       </a>
 
