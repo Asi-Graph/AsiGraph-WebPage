@@ -787,7 +787,7 @@ export default function Home() {
           </div>
 
           {/* Video Showcase Container: Carousel on mobile, Grid on md+ */}
-          <div className="relative group">
+          <div className="relative group reveal-item">
             {/* Mobile Nav Arrows */}
             <div className="flex md:hidden justify-between items-center mb-4 px-2">
               <span className="text-white/60 text-xs font-sans">החליקו לצפייה בסרטונים ◄</span>
@@ -945,7 +945,7 @@ export default function Home() {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className={`group relative bg-[#181a1b] rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 ${item.glow} reveal-item text-right flex flex-col justify-between shrink-0 w-[82vw] max-w-[320px] md:w-auto md:max-w-none snap-align-start`}
+                  className={`group relative bg-[#181a1b] rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 ${item.glow} text-right flex flex-col justify-between shrink-0 w-[82vw] max-w-[320px] md:w-auto md:max-w-none snap-align-start`}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-black">
                     <video
