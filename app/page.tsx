@@ -811,7 +811,7 @@ export default function Home() {
 
             <div
               ref={videoSliderRef}
-              className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 overflow-x-auto md:overflow-visible overflow-y-hidden touch-pan-x overscroll-x-contain snap-x snap-mandatory scrollbar-none pb-4 md:pb-0"
+              className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 overflow-x-auto md:overflow-visible overscroll-x-contain snap-x snap-mandatory scrollbar-none pb-4 md:pb-0"
             >
               {[
                 {
