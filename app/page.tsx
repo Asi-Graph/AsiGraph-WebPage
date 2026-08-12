@@ -983,53 +983,53 @@ export default function Home() {
               <div className="mt-8 border-t border-white/10 pt-8">
                 <h3 className="font-display text-2xl font-bold text-white mb-6">יש לכם שאלה? דברו איתנו.</h3>
                 <div className="flex flex-col gap-6 font-sans">
-                  <div className="flex items-center gap-4 justify-end">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-3 bg-white/5 rounded-full text-[#ff2a85] shrink-0">
+                      <Phone size={24} />
+                    </div>
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">טלפון</span>
                       <a href="tel:0543183186" className="text-white font-medium hover:text-[#00fbfb] transition-colors">0543183186</a>
                     </div>
-                    <div className="p-3 bg-white/5 rounded-full text-[#ff2a85]">
-                      <Phone size={24} />
-                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 justify-end">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-3 bg-white/5 rounded-full text-[#00fbfb] shrink-0">
+                      <MessageSquare size={24} />
+                    </div>
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">וואטסאפ</span>
                       <a href="https://wa.me/972543183186?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%A2%D7%91%D7%95%D7%93%D7%AA%20%D7%93%D7%A4%D7%95%D7%A1" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-[#00fbfb] transition-colors">0543183186 (הודעה מהירה)</a>
                     </div>
-                    <div className="p-3 bg-white/5 rounded-full text-[#00fbfb]">
-                      <MessageSquare size={24} />
-                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 justify-end">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-3 bg-white/5 rounded-full text-[#ffe600] shrink-0">
+                      <Mail size={24} />
+                    </div>
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">אימייל</span>
                       <a href="mailto:asishor2@gmail.com" className="text-white font-medium hover:text-[#ffe600] transition-colors">asishor2@gmail.com</a>
                     </div>
-                    <div className="p-3 bg-white/5 rounded-full text-[#ffe600]">
-                      <Mail size={24} />
-                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 justify-end">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-3 bg-white/5 rounded-full text-[#00fbfb] shrink-0">
+                      <MapPin size={24} />
+                    </div>
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">כתובת</span>
                       <span className="text-white font-medium">אחד העם 3, תל אביב</span>
                     </div>
-                    <div className="p-3 bg-white/5 rounded-full text-[#00fbfb]">
-                      <MapPin size={24} />
-                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 justify-end">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-3 bg-white/5 rounded-full text-[#ff2a85] shrink-0">
+                      <ChevronLeft size={24} />
+                    </div>
                     <div className="text-right">
                       <span className="text-white/40 text-xs block font-bold uppercase">שעות פעילות</span>
                       <span className="text-white font-medium">א׳-ה׳: 08:30 - 17:00</span>
-                    </div>
-                    <div className="p-3 bg-white/5 rounded-full text-[#ff2a85]">
-                      <ChevronLeft size={24} />
                     </div>
                   </div>
                 </div>
