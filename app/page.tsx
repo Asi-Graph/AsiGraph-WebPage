@@ -1,5 +1,6 @@
 "use client";
 
+import ShorTechLogo from "@/components/ShorTechLogo";
 import { useState, useEffect, useRef } from "react";
 import {
   Search,
@@ -1166,7 +1167,7 @@ export default function Home() {
             className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
           >
             <span className="font-sans text-white/50 text-xs group-hover:text-white/90 transition-colors">פיתוח ועיצוב האתר:</span>
-            <img src="/shortech.png" alt="ShorTech Studio" className="h-4.5 w-auto object-contain brightness-110 group-hover:scale-105 transition-transform" />
+            <ShorTechLogo className="h-5 w-auto transition-transform group-hover:scale-105" />
           </a>
 
           <div className="flex gap-8">
