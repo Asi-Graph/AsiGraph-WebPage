@@ -1157,6 +1157,18 @@ export default function Home() {
 
         <div className="mt-20 pt-8 border-t border-white/5 px-6 md:px-16 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <p className="font-sans text-white/40 text-sm">© {new Date().getFullYear()} אסיגרף - בית דפוס בתל אביב ובמרכז. כל הזכויות שמורות.</p>
+          
+          {/* ShorTech Creator Credit */}
+          <a
+            href="https://shortechstudio.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+          >
+            <span className="font-sans text-white/50 text-xs group-hover:text-white/90 transition-colors">פיתוח ועיצוב האתר:</span>
+            <img src="/shortech.png" alt="ShorTech Studio" className="h-4.5 w-auto object-contain brightness-110 group-hover:scale-105 transition-transform" />
+          </a>
+
           <div className="flex gap-8">
             <a className="font-sans text-white/40 text-xs hover:text-white transition-colors" href="#">מדיניות פרטיות</a>
             <a className="font-sans text-white/40 text-xs hover:text-white transition-colors" href="#">תנאי שימוש</a>
