@@ -9,8 +9,15 @@ export default function ShorTechLogo({ className = "h-5 w-auto" }: ShorTechLogoP
   const emeraldColor = "oklch(0.642 0.159 163.8)";
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 160" className={className}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 540 160"
+      xmlLang="en"
+      className={`${className} overflow-visible`}
+      style={{ direction: "ltr" }}
+    >
       <style>{`
+        svg, g, text { direction: ltr !important; unicode-bidi: isolate; }
         .switch, .switchAlt { transform-origin: 405px 90px; transform-box: fill-box; }
         .switch {
           animation: switchOut 6s ease-in-out infinite, jump 6s ease-in-out infinite;
@@ -38,19 +45,26 @@ export default function ShorTechLogo({ className = "h-5 w-auto" }: ShorTechLogoP
           78% { transform: scale(1) rotate(0deg); }
         }
       `}</style>
-      <g fontFamily="Segoe UI, sans-serif" fontWeight="900" fontSize="126" dominantBaseline="middle" textAnchor="start">
-        <text x="20" y="90" fill={blueColor}>
+      <g
+        style={{ direction: "ltr" }}
+        fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        fontWeight="900"
+        fontSize="126"
+        dominantBaseline="middle"
+        textAnchor="start"
+      >
+        <text x="10" y="90" fill={blueColor}>
           SHOR
         </text>
         <g>
-          <text x="380" y="90" fill={emeraldColor} fontWeight="700" className="switch">
+          <text x="370" y="90" fill={emeraldColor} fontWeight="700" className="switch">
             T
           </text>
-          <text x="380" y="90" fill={emeraldColor} fontWeight="700" className="switchAlt">
+          <text x="370" y="90" fill={emeraldColor} fontWeight="700" className="switchAlt">
             t
           </text>
         </g>
-        <text x="435" y="100" fontSize="60" fontWeight="500" fill={blueColor} letterSpacing="-1">
+        <text x="425" y="100" fontSize="60" fontWeight="500" fill={blueColor} letterSpacing="-1">
           ech
         </text>
       </g>
