@@ -117,7 +117,7 @@ export default function Home() {
 
   const [activeSection, setActiveSection] = useState("");
   const navContainerRef = useRef<HTMLDivElement>(null);
-  const [underlineStyle, setUnderlineStyle] = useState<{ left: number; width: number; opacity: number; color: string }>({ left: 0, width: 0, opacity: 0, color: "#00fbfb" });
+  const [underlineStyle, setUnderlineStyle] = useState<{ left: number; width: number; opacity: number; color: string }>({ left: 0, width: 0, opacity: 0, color: "transparent" });
 
   // Monitor scroll for header shade and active section
   useEffect(() => {
@@ -126,7 +126,7 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    const sectionIds = ["services", "about", "video-showcase", "projects", "features", "gallery", "contact"];
+    const sectionIds = ["services", "about", "video-showcase", "contact"];
     const sectionElements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
@@ -168,10 +168,7 @@ export default function Home() {
       "": "#00fbfb",           // דף הבית (cyan)
       "services": "#ffe600",     // שירותים (yellow)
       "about": "#ff2a85",        // אודות (pink)
-      "projects": "#4ade80",     // פרויקטים (green)
       "video-showcase": "#ff2a85", // מאחורי הקלעים (magenta)
-      "features": "#00fbfb",     // הטכנולוגיה שלנו (cyan)
-      "gallery": "#ffe600",      // גלריה (yellow)
       "contact": "#4ade80"       // צור קשר (green)
     };
 
@@ -304,7 +301,7 @@ export default function Home() {
       badge: "לכל פגישה עסקית",
       subtitle: "פתרון מקצועי להצגת מסמכים וחומרי שיווק.",
       desc: "פולדרים ממותגים בהתאמה אישית המשלבים עיצוב מוקפד, חומרי גלם איכותיים, כיסים ייעודיים וגימור ברמה הגבוהה ביותר.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfLAFnMs1xNIecqlenxMnQ_GbBcF5Gr7HIwuqIUPPTv_0C-nt_499vvvstjel-5or3H4xEzRyGmpblpxdQuat-BfUq9UNuz1AmTEtszWopUB9ssESpCIj4NrV7SRIBg-G3zg9_lM5Yz4-6HmDEyuw9fctqOv1MdF1TLTjLDmdqu_Cm8sClV2TvfH75IpjltBTrLywivIBNlGkPfnSoYTmwtCDdF-esCpVULe_EGbZkTNZgBtqgXmd9FlhEf5-PE1pWy_uwFuteDS8",
+      image: "/folders.png",
       glowClass: "glow-green hover:border-green-500/50",
       textColor: "group-hover:text-green-400",
       badgeColor: "bg-green-500/10 text-green-400 border-green-500/30"
@@ -348,43 +345,35 @@ export default function Home() {
       glowClass: "glow-green hover:border-green-500/50",
       textColor: "group-hover:text-green-400",
       badgeColor: "bg-green-500/10 text-green-400 border-green-500/30"
-    }
-  ];
-
-  const projects = [
-    {
-      title: "מיתוג למסעדת שף",
-      category: "מיתוג קולינרי",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCCcF2CXiXN0AeRfSQ_JdcmPPHuvuKuoQ-PkvdEBIR1tlKhC-aH9kIcmVL8Pk4LGbxVXwjkQunq9jeTnW0DDAFvLz9MAFox-nBdRyMzRTgIvqIgkfvIYyKfA2JA_O2HFKx66O4pFBmOysAcNMRxBjTOqSXbZJB0kAAD7CWhKlQKM_8sz0km9argbgvKAhpU7v_Uu3LkWFMGew_6kv3mnot9MLM9KClr7O7n3MJmb-uX_a28tPg3bxr11lQACyPZC6KZrRIi0a9aXdw",
-      glowClass: "glow-magenta hover:border-[#ff2a85]/50",
-      hoverColor: "group-hover:text-[#ff2a85]"
     },
     {
-      title: "משרד עורכי דין פרימיום",
-      category: "עיצוב עסקי",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBPSMHJDKxOAXjA1dV_MjDU1VDEs-IsH4uWWyRnTShoOMxNYCkW679sLDUQ3FtadIjQFSYgbSvh_FnAHzxgsXN7nYNvqh7Elba_l8zC3WZX59HEFgkwFIBf0dwxzWsO5M2jnm8Nd6bWI6hAE1IsVTWJOPJT2ZXHS9mxrmmiho5_qmDLbgRCT6GSXsjb_fN3amitxF5deUY-D9eeUY5TSgmP1jWBM8nWKrJn8hdD4ju1dFhnF9AkLQvoj1dxG2pciqMFphFzeDX8ius",
+      title: "מחברות מעוצבות",
+      badge: "מיתוג עסקי מרשים",
+      subtitle: "מחברות ספירלה מעוצבות וממותגות בהתאמה אישית.",
+      desc: "מחברות איכותיות בכריכה קשה או רכה, עם ספירלה עמידה, דפים פנימיים מותאמים אישית ומיתוג מלא לעסקים, ככנסים ואירועים.",
+      image: "/notebooks.png",
       glowClass: "glow-cyan hover:border-[#00fbfb]/50",
-      hoverColor: "group-hover:text-[#00fbfb]"
+      textColor: "group-hover:text-[#00fbfb]",
+      badgeColor: "bg-[#00fbfb]/10 text-[#00fbfb] border-[#00fbfb]/30"
+    },
+    {
+      title: "הדפסת ספרים וחוברות",
+      badge: "איכות כריכה ללא פשרות",
+      subtitle: "הדפסה וכריכת ספרים, חוברות וספרי מורשת.",
+      desc: "הדפסה ברמת גימור יוקרתית, כריכות קשות ורכות, הטבעות זהב/כסף, וגימורים מוקפדים המעניקים חוויית קריאה עשירה.",
+      image: "/booklet.jpg",
+      glowClass: "glow-magenta hover:border-[#ff2a85]/50",
+      textColor: "group-hover:text-[#ff2a85]",
+      badgeColor: "bg-[#ff2a85]/10 text-[#ff2a85] border-[#ff2a85]/30"
     }
   ];
 
-  const galleryImages = [
-    {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBMWNJXB15MK4ogYmO9ORbdZtQob78WlH_rujkyUBxAg1BR8pFD-GxWXPqqk5YewwAMYL4gyhZYDFNQOSTgEVxMzscmM53BYMT97b3mGS9-vKyOQR7VOqzU5aulJdcCwETV_GB9el7bl-Eu0laxGhF7OCD2TnV3MJJVGFX4ZvV3v86SqkZBOg1KERRd05LqRe2Fx68zv3xBLZycD6TcoVAv-sbhC-T5L-TqpAtwWXBBDwC-dVcTfOeXK2WYKu2OufXaRuyGMOfIbik",
-      glowClass: "glow-cyan hover:border-[#00fbfb]/50"
-    },
-    {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAq1LLwxeqLPAVNK5NCOPTEVXKgW9u7BFS3pYhLe0-xowTA1y8fXn2wiLOiMDr689WLy6o3D9jr_x2VpDhFR_CnbmK2YR-pzF2axpt05haNhIhwfbYNRTL_6HIm8bPCHqSY4SexZplbeCk0sl8b59dlGphzyg8inAJAw7mQELWaEscfCwQbKcxfxhOodxPVrucErsuX9TsIT10hN0Y3NDZVKIat5eIejsrJpokol6N5ya6GwkOYbteGgvcmaiY8qMdVByuPQJsf2K4",
-      glowClass: "glow-magenta hover:border-[#ff2a85]/50"
-    },
-    {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlwVgQNiuBA_rZJ5aVaxDq3uU0nGS2nUr9JNQXvE5584Zj69SObE7VZgPwCo-RxMT_RIjjRDO-Dfkbo463DjLDmMqCyEz_pEu4aA9FaSM-i2DEsLB6JEL3Yhq4_3ZmRZVELjY95zTj6MQLjk39Rt-lkGGYP0y9PUZ5WgXK-xRWc3hv3Obq4ND5ZZIp2OP1ijrkCS7dIg8HMh31Npmeo0DgxEopEQSBRfmkpBQJqOhSO8fmMDBSdRtcS0ukI3G_LOnEdB0v9SubNd4",
-      glowClass: "glow-yellow hover:border-[#ffe600]/50"
-    },
-    {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMEOQlyI6sTNyngY8DcmgC7fxL2574xlxhN7A9zijGliE00P-Kq0m2-MQCghagiGBQxF5Kahrzg8LKlRs8JtaFgk29YVmZxHNg8xXjBdRvcLWpp8Pk_5FhwvaZfLrEuMb2J_yz10__z8bNPTX_eovaFjSqxCAYMIsMPt8jo2BYykKiKtnWil7mfeYrILhlBDvOUHo6CL7J0y0Q00e6Oav7fSM4jhSgddVl3ewg3qz0qkikFeSnnFPETIF_lpmHtIFVwWG1RqDyQhw",
-      glowClass: "glow-green hover:border-green-500/50"
-    }
+  const clientLogos = [
+    { name: "פופינה Popina", src: "/logos/popina.jpg" },
+    { name: "גולדטק", src: "/logos/goldtech.jpg" },
+    { name: "TYO", src: "/logos/tyo.png" },
+    { name: "מנופי אבי", src: "/logos/manofi-avi.jpg" },
+    { name: "RemedixCare", src: "/logos/remedixcare.png" }
   ];
 
   return (
@@ -433,10 +422,7 @@ export default function Home() {
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "" ? "text-white font-semibold" : "text-white/70"}`} href="#">דף הבית</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "services" ? "text-white font-semibold" : "text-white/70"}`} href="#services">שירותים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "about" ? "text-white font-semibold" : "text-white/70"}`} href="#about">אודות</a>
-            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "projects" ? "text-white font-semibold" : "text-white/70"}`} href="#projects">פרויקטים</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-magenta ${activeSection === "video-showcase" ? "text-white font-semibold" : "text-white/70"}`} href="#video-showcase">מאחורי הקלעים</a>
-            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-cyan ${activeSection === "features" ? "text-white font-semibold" : "text-white/70"}`} href="#features">הטכנולוגיה שלנו</a>
-            <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-yellow ${activeSection === "gallery" ? "text-white font-semibold" : "text-white/70"}`} href="#gallery">גלריה</a>
             <a className={`font-sans transition-colors duration-300 pb-1 hover-cmyk-green ${activeSection === "contact" ? "text-white font-semibold" : "text-white/70"}`} href="#contact">צור קשר</a>
 
             {/* Sliding Underline Indicator */}
@@ -485,10 +471,7 @@ export default function Home() {
             <a onClick={() => setMobileMenuOpen(false)} className="font-display font-semibold text-[#00fbfb]" href="#">דף הבית</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-magenta" href="#services">שירותים</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-yellow" href="#about">אודות</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-green" href="#projects">פרויקטים</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-magenta" href="#video-showcase">מאחורי הקלעים</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-cyan" href="#features">הטכנולוגיה שלנו</a>
-            <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-yellow" href="#gallery">גלריה</a>
             <a onClick={() => setMobileMenuOpen(false)} className="font-display text-white/80 hover:text-white hover-cmyk-green" href="#contact">צור קשר</a>
           </div>
         </div>
@@ -733,37 +716,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section id="projects" className="py-24 md:py-32 bg-[#0d0e0f]">
-        <div className="px-6 md:px-16 max-w-7xl mx-auto mb-16 text-right">
-          <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-4">עבודות שאנחנו גאים בהן</h2>
-          <p className="font-sans text-white/70 text-lg md:text-xl font-light max-w-3xl leading-relaxed mb-6">
-            כל פרויקט מספר סיפור אחר. <br /> זו ההזדמנות שלכם לראות את רמת הגימור, איכות ההדפסה והירידה לפרטים שמאפיינת כל עבודה שלנו.
+      {/* Client Logos Scrolling Marquee Section */}
+      <section dir="ltr" className="py-8 bg-[#121414] border-t border-b border-white/5 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-6 text-center">
+          <p className="font-display text-xs md:text-sm font-bold tracking-[0.25em] text-white/50 uppercase">
+            המותגים המובילים שסומכים עלינו
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#00fbfb] via-[#ff2a85] to-[#ffe600]"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-16 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <div key={index} className="reveal-item group text-right">
-              <div className={`relative aspect-[16/9] overflow-hidden mb-8 rounded-2xl border border-white/5 ${project.glowClass}`}>
+        {/* Gradient Fades for Smooth Side Edges */}
+        <div className="absolute top-0 bottom-0 left-0 w-20 md:w-36 bg-gradient-to-r from-[#121414] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-20 md:w-36 bg-gradient-to-l from-[#121414] to-transparent z-10 pointer-events-none" />
+
+        <div dir="ltr" className="overflow-hidden w-full flex select-none">
+          <div className="animate-marquee-ltr flex items-center gap-40 md:gap-52 shrink-0 pr-40 md:pr-52">
+            {[
+              ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos,
+              ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos
+            ].map((logo, idx) => (
+              <div
+                key={idx}
+                className="w-40 md:w-52 h-13 md:h-16 px-4 bg-white/95 hover:bg-white rounded-lg md:rounded-xl flex items-center justify-center shadow-md hover:shadow-cyan-500/20 hover:scale-105 transition-all duration-300 shrink-0 border border-white/10"
+              >
                 <img
-                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
+                  src={logo.src}
+                  alt={logo.name}
+                  className="max-h-7 md:max-h-9 w-auto max-w-[85%] object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-500" />
               </div>
-              <div className="flex justify-between items-start flex-row-reverse">
-                <div>
-                  <span className="font-display text-sm text-white/50 mb-2 block">{project.category}</span>
-                  <h3 className={`font-display text-white text-2xl font-bold transition-colors ${project.hoverColor}`}>{project.title}</h3>
-                </div>
-                <ArrowLeft className={`text-white transition-all duration-300 transform group-hover:-translate-x-3 ${project.hoverColor}`} size={32} />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -794,7 +776,7 @@ export default function Home() {
               <div className="flex gap-2">
                 <button
                   onClick={() => scrollVideoSlider("right")}
-                  className="p-2 rounded-full bg-white/10 text-white hover:bg-[#00fbfb] hover:text-black transition-colors"
+                  className="p-2 rounded-full bg-white/10 text-[#ffffff] hover:bg-[#00fbfb] hover:text-black transition-colors"
                   aria-label="הקודם"
                 >
                   <ChevronRight size={18} />
@@ -982,76 +964,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Technology & Color Accuracy Section */}
-      <section id="features" className="bg-[#121414] py-24 md:py-32 overflow-hidden">
-        {/* Technology Block */}
-        <div className="flex flex-col lg:flex-row items-center mb-24 lg:mb-32">
-          <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPSMHJDKxOAXjA1dV_MjDU1VDEs-IsH4uWWyRnTShoOMxNYCkW679sLDUQ3FtadIjQFSYgbSvh_FnAHzxgsXN7nYNvqh7Elba_l8zC3WZX59HEFgkwFIBf0dwxzWsO5M2jnm8Nd6bWI6hAE1IsVTWJOPJT2ZXHS9mxrmmiho5_qmDLbgRCT6GSXsjb_fN3amitxF5deUY-D9eeUY5TSgmP1jWBM8nWKrJn8hdD4ju1dFhnF9AkLQvoj1dxG2pciqMFphFzeDX8ius"
-              alt="טכנולוגיית דפוס מתקדמת"
-              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-right opacity-90"
-              loading="lazy"
-            />
-          </div>
-          <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
-            <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-              הטכנולוגיה משתנה.<br />
-              <span className="text-[#ffe600]">המחויבות שלנו לא.</span>
-            </h2>
-            <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed max-w-lg font-light">
-              אנחנו משלבים בין ניסיון של עשרות שנים לבין ציוד הדפסה מתקדם, כדי להבטיח צבעים מדויקים, חדות מרבית ותוצאה שמכבדת את המותג שלכם.
-            </p>
-          </div>
-        </div>
-
-        {/* Color Accuracy Block */}
-        <div className="flex flex-col lg:flex-row-reverse items-center">
-          <div className="w-full lg:w-1/2 reveal-item relative overflow-hidden">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlwVgQNiuBA_rZJ5aVaxDq3uU0nGS2nUr9JNQXvE5584Zj69SObE7VZgPwCo-RxMT_RIjjRDO-Dfkbo463DjLDmMqCyEz_pEu4aA9FaSM-i2DEsLB6JEL3Yhq4_3ZmRZVELjY95zTj6MQLjk39Rt-lkGGYP0y9PUZ5WgXK-xRWc3hv3Obq4ND5ZZIp2OP1ijrkCS7dIg8HMh31Npmeo0DgxEopEQSBRfmkpBQJqOhSO8fmMDBSdRtcS0ukI3G_LOnEdB0v9SubNd4"
-              alt="בקרת איכות ודיוק צבע"
-              className="w-full h-[500px] md:h-[600px] object-cover asymmetric-clip-left opacity-90"
-              loading="lazy"
-            />
-          </div>
-          <div className="w-full lg:w-1/2 px-6 md:px-16 py-12 text-right reveal-item">
-            <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-              דיוק צבע שמתחיל במקצוענות
-            </h2>
-            <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed max-w-lg font-light mb-4">
-              צבע הוא הרבה יותר מגוון. הוא חלק מהזהות של העסק שלכם.
-            </p>
-            <p className="font-sans text-white/70 text-base md:text-lg leading-relaxed max-w-lg">
-              אנחנו מקפידים על בקרת צבע מתקדמת כדי שכל הדפסה תיראה בדיוק כפי שתוכננה, בין אם מדובר על דפוס דיגיטלי מהיר או הדפסות אופסט בהיקפים גדולים.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Inspiration Gallery */}
-      <section id="gallery" className="py-24 md:py-32 bg-[#0d0e0f]">
-        <div className="px-6 md:px-16 max-w-7xl mx-auto mb-16 text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-4">העבודות שלנו מדברות בעד עצמן</h2>
-          <p className="font-sans text-white/70 text-lg md:text-xl font-light max-w-2xl mx-auto">
-            מבחר עבודות שבוצעו עבור עסקים, ארגונים ולקוחות פרטיים מכל רחבי הארץ.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 px-6 md:px-16 max-w-7xl mx-auto">
-          {galleryImages.map((image, index) => (
-            <div key={index} className={`aspect-square overflow-hidden rounded-xl border border-white/5 reveal-item ${image.glowClass}`}>
-              <img
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-zoom-in"
-                src={image.url}
-                alt={`גלריית השראה ${index + 1}`}
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Contact Section & Form */}
       <section id="contact" className="py-24 md:py-32 bg-gradient-to-b from-[#121414] to-[#0d0e0f] border-t border-white/5">
         <div className="px-6 md:px-16 max-w-7xl mx-auto">
@@ -1127,37 +1039,58 @@ export default function Home() {
             {/* Direct Form */}
             <div className="glass-card p-8 md:p-12 rounded-3xl lg:order-1 text-right">
               <h3 className="font-display text-2xl font-bold text-white mb-6">בואו נדבר</h3>
-              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-6 font-sans">
+              <form
+                action="https://formsubmit.co/asishor2@gmail.com"
+                method="POST"
+                className="flex flex-col gap-6 font-sans text-right"
+              >
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="פנייה חדשה מאתר אסיגרף" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div>
                   <label className="text-sm text-white/75 font-semibold block mb-2">שם מלא</label>
                   <input
                     type="text"
+                    name="שם מלא"
+                    required
                     placeholder="שם מלא"
-                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00fbfb] focus:ring-1 focus:ring-[#00fbfb] transition-all text-white"
+                    dir="rtl"
+                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00fbfb] focus:ring-1 focus:ring-[#00fbfb] transition-all text-white text-right placeholder:text-right"
                   />
                 </div>
                 <div>
                   <label className="text-sm text-white/75 font-semibold block mb-2">מספר טלפון</label>
                   <input
                     type="tel"
+                    name="מספר טלפון"
+                    required
                     placeholder="מספר טלפון"
-                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#ff2a85] focus:ring-1 focus:ring-[#ff2a85] transition-all text-white"
+                    dir="rtl"
+                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#ff2a85] focus:ring-1 focus:ring-[#ff2a85] transition-all text-white text-right placeholder:text-right font-sans"
                   />
                 </div>
                 <div>
                   <label className="text-sm text-white/75 font-semibold block mb-2">דואר אלקטרוני</label>
                   <input
                     type="email"
+                    name="דואר אלקטרוני"
+                    required
                     placeholder="דואר אלקטרוני"
-                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#ffe600] focus:ring-1 focus:ring-[#ffe600] transition-all text-white"
+                    dir="rtl"
+                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#ffe600] focus:ring-1 focus:ring-[#ffe600] transition-all text-white text-right placeholder:text-right"
                   />
                 </div>
                 <div>
                   <label className="text-sm text-white/75 font-semibold block mb-2">פרטי ההודעה / פרויקט</label>
                   <textarea
+                    name="תוכן ההודעה"
                     rows={4}
+                    required
                     placeholder="ספרו לנו קצת על הפרויקט..."
-                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00fbfb] focus:ring-1 focus:ring-[#00fbfb] transition-all text-white resize-none"
+                    dir="rtl"
+                    className="w-full bg-[#1e2020]/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00fbfb] focus:ring-1 focus:ring-[#00fbfb] transition-all text-white resize-none text-right placeholder:text-right"
                   />
                 </div>
                 <div className="mt-4">
@@ -1207,8 +1140,9 @@ export default function Home() {
             <h4 className="font-display text-white text-xl font-bold mb-4">קישורים מהירים</h4>
             <a className="font-sans text-white/60 hover-cmyk-cyan transition-colors" href="#">דף הבית</a>
             <a className="font-sans text-white/60 hover-cmyk-magenta transition-colors" href="#services">שירותים</a>
-            <a className="font-sans text-white/60 hover-cmyk-yellow transition-colors" href="#projects">מוצרים</a>
-            <a className="font-sans text-white/60 hover-cmyk-cyan transition-colors" href="#gallery">גלריית השראה</a>
+            <a className="font-sans text-white/60 hover-cmyk-yellow transition-colors" href="#about">אודות</a>
+            <a className="font-sans text-white/60 hover-cmyk-cyan transition-colors" href="#video-showcase">מאחורי הקלעים</a>
+            <a className="font-sans text-white/60 hover-cmyk-green transition-colors" href="#contact">צור קשר</a>
           </div>
 
           <div className="flex flex-col gap-4">

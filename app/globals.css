@@ -269,4 +269,25 @@ body {
   background: #00fbfb;
 }
 
+/* Logo Marquee Infinite Scroll Animation */
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  flex-shrink: 0;
+  animation: marquee-ltr 55s linear infinite;
+}
+
+.animate-marquee-ltr:hover {
+  animation-play-state: paused;
+}
+
 
